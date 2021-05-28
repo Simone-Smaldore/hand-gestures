@@ -22,7 +22,8 @@ class HandDetector:
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         result = self.hands.process(img_rgb)
         if result.multi_hand_landmarks:
-            selected_hand = result.multi_hand_landmarks[hand_number]
+            # TODO implementare strategia per far scegliere la mano destra o sinistra
+            selected_hand = result.multi_hand_landmarks[len(result.multi_hand_landmarks) - 1]
             for id, landmark in enumerate(selected_hand.landmark):
                 height, width, c = img.shape
                 cx, cy = int(landmark.x * width), int(landmark.y * height)

@@ -26,8 +26,8 @@ class HandDetector:
             selected_hand = result.multi_hand_landmarks[len(result.multi_hand_landmarks) - 1]
             for id, landmark in enumerate(selected_hand.landmark):
                 height, width, c = img.shape
-                cx, cy = int(landmark.x * width), int(landmark.y * height)
-                landmark_list.append([id, cx, cy])
+                cx, cy, cz = int(landmark.x * width), int(landmark.y * height), landmark.z
+                landmark_list.append([id, cx, cy, cz])
         return landmark_list
 
 
